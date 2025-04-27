@@ -84,6 +84,29 @@
                 <mxCell id="rel14" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor4" target="uc7"/>
                 <mxCell id="rel15" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor4" target="uc11"/>
             </root>
+            
+            <!-- 添加用例之间的关系 -->
+            <!-- Include关系 -->
+            <mxCell id="inc1" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;dashed=1;endSize=12;html=1;" edge="1" parent="1" source="uc7" target="uc8">
+                <mxGeometry x="-0.3" y="20" relative="1" as="geometry"/>
+            </mxCell>
+            
+            <mxCell id="inc2" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;dashed=1;endSize=12;html=1;" edge="1" parent="1" source="uc10" target="uc11">
+                <mxGeometry x="-0.3" y="20" relative="1" as="geometry"/>
+            </mxCell>
+            
+            <!-- Extend关系 -->
+            <mxCell id="ext1" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;dashed=1;endSize=12;html=1;" edge="1" parent="1" source="uc3" target="uc2">
+                <mxGeometry x="-0.3" y="20" relative="1" as="geometry"/>
+            </mxCell>
+            
+            <mxCell id="ext2" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;dashed=1;endSize=12;html=1;" edge="1" parent="1" source="uc4" target="uc2">
+                <mxGeometry x="-0.3" y="20" relative="1" as="geometry"/>
+            </mxCell>
+            
+            <mxCell id="ext3" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;dashed=1;endSize=12;html=1;" edge="1" parent="1" source="uc5" target="uc7">
+                <mxGeometry x="-0.3" y="20" relative="1" as="geometry"/>
+            </mxCell>
         </mxGraphModel>
     </diagram>
 </mxfile>
