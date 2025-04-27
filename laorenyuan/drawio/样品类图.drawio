@@ -46,8 +46,8 @@
                 <mxCell id="rel6" value="1..*" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="CodeRule" target="SampleInfo" edge="1">
                     <mxGeometry x="-1" y="3" relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="CollectionGroup" value="采集管分组&#10;--&#10;- groupId: String&#10;- groupName: String&#10;- groupType: String&#10;- tubeList: List&lt;String&gt;&#10;--&#10;+ addTube()&#10;+ removeTube()&#10;+ getGroupInfo()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="20" y="690" width="200" height="200" as="geometry"/>
+                <mxCell id="CollectionGroup" value="采集管分组&#10;--&#10;- groupId: String&#10;- groupName: String&#10;- groupType: String&#10;- tubeList: List&lt;String&gt;&#10;- groupStatus: String  // 新增：分组状态&#10;--&#10;+ addTube()&#10;+ removeTube()&#10;+ getGroupInfo()&#10;+ validateGroupInfo()  // 新增：验证分组信息完整性&#10;+ saveGroup()  // 新增：保存分组信息&#10;+ updateGroupStatus()  // 新增：更新分组状态" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="-20" y="585" width="200" height="250" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
