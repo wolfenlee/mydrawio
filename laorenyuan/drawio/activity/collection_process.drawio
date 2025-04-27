@@ -1,0 +1,114 @@
+<mxfile host="65bd71144e">
+    <diagram id="collection-process-management" name="采集流程管理活动图">
+        <mxGraphModel dx="1166" dy="706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                
+                <!-- 开始节点 -->
+                <mxCell id="start" value="" style="ellipse;fillColor=#000000;strokeColor=none;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="384" y="40" width="30" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 泳道分区 -->
+                <mxCell id="pool1" value="采集流程管理" style="swimlane;horizontal=0;startSize=30;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="100" width="520" height="800" as="geometry"/>
+                </mxCell>
+                
+                <!-- 活动节点 -->
+                <mxCell id="act1" value="查看采集管分组" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="pool1">
+                    <mxGeometry x="190" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="act2" value="选择采集管" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="pool1">
+                    <mxGeometry x="190" y="140" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="act3" value="获取样本信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="pool1">
+                    <mxGeometry x="190" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="act4" value="更新采集状态" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="pool1">
+                    <mxGeometry x="190" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="decision1" value="采集流程&#10;是否完成？" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="pool1">
+                    <mxGeometry x="185" y="440" width="130" height="80" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="act5" value="生成流程报告" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="pool1">
+                    <mxGeometry x="190" y="560" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="act6" value="通知样本入库" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" vertex="1" parent="pool1">
+                    <mxGeometry x="190" y="660" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <!-- 结束节点 -->
+                <mxCell id="end" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="384" y="930" width="30" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 连接线 -->
+                <mxCell id="flow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="start" target="act1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="flow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act1" target="act2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="flow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act2" target="act3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="flow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act3" target="act4">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="flow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act4" target="decision1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="flow6" value="否" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="decision1" target="act4">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="300" y="580"/>
+                            <mxPoint x="300" y="470"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="flow7" value="是" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="decision1" target="act5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="flow8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act5" target="act6">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="flow9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act6" target="end">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                
+                <!-- 注释 -->
+                <mxCell id="note1" value="与样本信息管理模块交互" style="shape=note;size=15;align=left;spacingLeft=5;html=1;whiteSpace=wrap;fillColor=#fff2cc;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="note2" value="与样本入库管理模块交互" style="shape=note;size=15;align=left;spacingLeft=5;html=1;whiteSpace=wrap;fillColor=#d5e8d4;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="760" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <!-- 注释连接线 -->
+                <mxCell id="note1_line" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="act3" target="note1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="note2_line" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="act6" target="note2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
