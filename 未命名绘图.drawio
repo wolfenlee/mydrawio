@@ -1,10 +1,89 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0" version="26.2.14">
-  <diagram name="第 1 页" id="bO_2S3TpDnScA6GtWDb6">
-    <mxGraphModel>
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="app.diagrams.net">
+    <diagram id="Uv1Zk2VXhTtYd4uX7mQK" name="用例图">
+        <mxGraphModel dx="1682" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                
+                <!-- Actors -->
+                <mxCell id="actor1" value="医护人员" style="actor" vertex="1" parent="1">
+                    <mxGeometry x="40" y="240" width="80" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor2" value="样本管理员" style="actor" vertex="1" parent="1">
+                    <mxGeometry x="800" y="240" width="80" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor3" value="系统管理员" style="actor" vertex="1" parent="1">
+                    <mxGeometry x="40" y="500" width="80" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor4" value="系统" style="actor" vertex="1" parent="1">
+                    <mxGeometry x="800" y="500" width="80" height="120" as="geometry"/>
+                </mxCell>
+                
+                <!-- Use Cases -->
+                <mxCell id="uc1" value="管理采集管分组" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="200" y="100" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc2" value="查询采集管信息" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="200" y="200" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc3" value="查看/打印采集流程" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="200" y="300" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc4" value="查看流程状态（颜色区分）" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="200" y="400" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc5" value="关联捐献者信息" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="200" y="500" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc6" value="管理知情同意书" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="600" y="100" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc7" value="样本登记与自动保存" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="600" y="200" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc8" value="生成样本隐私编号" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="600" y="300" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc9" value="管理样本编码规则" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="600" y="400" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc10" value="图形化入库操作" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="600" y="500" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc11" value="自动定位存储位置" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="600" y="600" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc12" value="管理已出库样本" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="1000" y="100" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc13" value="查询操作日志" style="ellipse" vertex="1" parent="1">
+                    <mxGeometry x="1000" y="200" width="160" height="70" as="geometry"/>
+                </mxCell>
+                
+                <!-- Relationships -->
+                <!-- 医护人员 -->
+                <mxCell id="rel1" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor1" target="uc2"/>
+                <mxCell id="rel2" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor1" target="uc3"/>
+                <mxCell id="rel3" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor1" target="uc4"/>
+                <mxCell id="rel4" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor1" target="uc5"/>
+                <mxCell id="rel5" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor1" target="uc7"/>
+                
+                <!-- 样本管理员 -->
+                <mxCell id="rel6" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor2" target="uc1"/>
+                <mxCell id="rel7" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor2" target="uc6"/>
+                <mxCell id="rel8" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor2" target="uc10"/>
+                <mxCell id="rel9" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor2" target="uc11"/>
+                <mxCell id="rel10" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor2" target="uc12"/>
+                <mxCell id="rel11" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor2" target="uc13"/>
+                
+                <!-- 系统管理员 -->
+                <mxCell id="rel12" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor3" target="uc9"/>
+                
+                <!-- 系统 -->
+                <mxCell id="rel13" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor4" target="uc8"/>
+                <mxCell id="rel14" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor4" target="uc7"/>
+                <mxCell id="rel15" style="edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="actor4" target="uc11"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>
