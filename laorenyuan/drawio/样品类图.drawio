@@ -1,29 +1,29 @@
 <mxfile host="65bd71144e">
     <diagram id="sample-class-diagram" name="样本信息管理系统类图">
-        <mxGraphModel dx="2233" dy="890" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2481" dy="1047" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="SampleInfo" value="样本信息&#10;--&#10;- sampleId: String&#10;- sampleType: String&#10;- sampleCode: String&#10;- donorInfo: DonorInfo&#10;- consentForm: ConsentForm&#10;- collectionGroup: CollectionGroup&#10;- codeGenerationRule: CodeRule&#10;+ basicInfo: Map&lt;String, Object&gt;  // 新增：存储基础信息&#10;+ processingStatus: String  // 新增：处理状态&#10;+ storageInfo: SampleStorage  // 新增：存储信息关联&#10;--&#10;+ generateSampleCode()&#10;+ maskSensitiveData()&#10;+ saveSampleInfo()&#10;+ getSampleStatus()&#10;+ validateMaskingResult()&#10;+ notifyCollectionProcess()  // 新增：通知采集流程&#10;+ validateBasicInfo()  // 新增：验证基础信息&#10;+ validateStorageRequirements()  // 新增：验证入库要求&#10;+ updateStorageStatus()  // 新增：更新存储状态" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="10" width="280" height="260" as="geometry"/>
+                    <mxGeometry x="260" y="10" width="390" height="320" as="geometry"/>
                 </mxCell>
                 <mxCell id="DonorInfo" value="捐献者信息&#10;--&#10;- donorId: String&#10;- name: String&#10;- age: int&#10;- gender: String&#10;- medicalHistory: String&#10;--&#10;+ maskPersonalInfo()&#10;+ updateDonorInfo()&#10;+ getDonorDetails()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="-30" width="200" height="200" as="geometry"/>
+                    <mxGeometry x="-130" y="30" width="200" height="200" as="geometry"/>
                 </mxCell>
                 <mxCell id="ConsentForm" value="知情同意书&#10;--&#10;- formId: String&#10;- sampleId: String&#10;- formFile: File&#10;- uploadDate: Date&#10;- description: String&#10;+ scanStatus: String&#10;+ verificationResult: Boolean&#10;+ formType: String  // 新增：表单类型&#10;+ signatureInfo: Map&lt;String, String&gt;  // 新增：签名信息&#10;--&#10;+ uploadForm()&#10;+ validateForm()&#10;+ getFormInfo()&#10;+ scanDocument()&#10;+ verifyDocument()&#10;+ updateDescription()&#10;+ linkToSample()&#10;+ validateSignature()  // 新增：验证签名" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="40" width="310" height="260" as="geometry"/>
+                    <mxGeometry x="790" y="30" width="310" height="260" as="geometry"/>
                 </mxCell>
                 <mxCell id="CollectionProcess" value="采集流程&#10;--&#10;- processId: String&#10;- sampleId: String&#10;- status: String&#10;- startTime: Date&#10;- endTime: Date&#10;--&#10;+ updateStatus()&#10;+ generateReport()&#10;+ getProcessDetails()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="300" y="560" width="200" height="200" as="geometry"/>
+                    <mxGeometry x="330" y="585" width="200" height="200" as="geometry"/>
                 </mxCell>
                 <mxCell id="SampleStorage" value="样本存储&#10;--&#10;- storageId: String&#10;- sampleId: String&#10;- location: String&#10;- status: String&#10;- operationLog: List&lt;Log&gt;&#10;+ outboundType: String  // 新增：出库方式（整盒/单个）&#10;+ outboundTime: Date  // 新增：出库时间&#10;+ outboundOperator: String  // 新增：出库操作人&#10;+ inboundTime: Date  // 新增：入库时间&#10;+ inboundOperator: String  // 新增：入库操作人&#10;+ storageStatus: String  // 新增：存储状态（待入库/已入库/已出库）&#10;--&#10;+ storeIn()&#10;+ storeOut()&#10;+ updateLocation()&#10;+ getStorageInfo()&#10;+ validateOutbound()  // 新增：验证出库信息&#10;+ recordOutbound()  // 新增：记录出库日志&#10;+ updateOutboundList()  // 新增：更新出库列表&#10;+ getBatchOutbound()  // 新增：获取整盒出库信息&#10;+ validateInbound()  // 新增：验证入库信息&#10;+ recordInbound()  // 新增：记录入库日志&#10;+ validateStorageLocation()  // 新增：验证存储位置" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="570" y="550" width="240" height="220" as="geometry"/>
+                    <mxGeometry x="620" y="600" width="400" height="380" as="geometry"/>
                 </mxCell>
                 <mxCell id="CodeRule" value="编码规则&#10;--&#10;- ruleId: String&#10;- prefix: String&#10;- format: String&#10;- autoNumberingRule: String&#10;- desensitizationEnabled: boolean&#10;- maskingRules: List&lt;DesensitizationRule&gt;&#10;+ ruleVersion: String  // 新增：规则版本&#10;+ effectiveDate: Date  // 新增：生效日期&#10;--&#10;+ setCodeFormat()&#10;+ setMaskingRules()&#10;+ generateCode()&#10;+ testCodeGeneration()&#10;+ validateCodeFormat()&#10;+ checkRuleVersion()  // 新增：检查规则版本" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
                     <mxGeometry x="-50" y="310" width="270" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="DesensitizationRule" value="数据脱敏规则&#10;--&#10;- ruleId: String&#10;- fieldName: String&#10;- maskingType: String&#10;- maskingPattern: String&#10;+ testData: String  // 添加测试数据字段&#10;+ lastTestResult: Boolean  // 添加测试结果字段&#10;--&#10;+ applyMask()&#10;+ validateRule()&#10;+ testMaskingEffect()  // 添加测试脱敏效果方法&#10;+ saveMaskingConfig()  // 添加保存配置方法" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=130;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="480" y="330" width="280" height="200" as="geometry"/>
+                    <mxGeometry x="610" y="330" width="280" height="200" as="geometry"/>
                 </mxCell>
                 <mxCell id="rel7" value="1..n" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CodeRule" target="DesensitizationRule" edge="1">
                     <mxGeometry x="-1" y="3" relative="1" as="geometry"/>
