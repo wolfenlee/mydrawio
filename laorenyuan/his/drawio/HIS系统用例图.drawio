@@ -1,5 +1,5 @@
 <mxfile host="65bd71144e">
-    <diagram id="cdss-usecase" name="CDSS系统用例图">
+    <diagram id="cdss-usecase" name="HIS系统用例图">
         <mxGraphModel dx="287" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
@@ -10,7 +10,7 @@
                 <mxCell id="actor2" value="护士" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="500" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="boundary" value="CDSS系统" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;" parent="1" vertex="1">
+                <mxCell id="boundary" value="HIS系统" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;" parent="1" vertex="1">
                     <mxGeometry x="120" y="40" width="600" height="700" as="geometry"/>
                 </mxCell>
                 <mxCell id="uc1" value="医嘱质控" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -79,6 +79,14 @@
                 <mxCell id="include5" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc5" target="uc5_1" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry"/>
                 </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="bRl4Ihu3-CdKu3fr25uM" name="第 2 页">
+        <mxGraphModel dx="287" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
             </root>
         </mxGraphModel>
     </diagram>
