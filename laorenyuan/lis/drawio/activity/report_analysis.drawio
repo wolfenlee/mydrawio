@@ -1,0 +1,93 @@
+<mxfile host="65bd71144e">
+    <diagram id="report-analysis" name="检验结果解读活动图">
+        <mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                
+                <!-- 泳道 -->
+                <mxCell id="lis_lane" value="LIS系统" style="swimlane;horizontal=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="40" width="300" height="600" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="cdss_lane" value="CDSS系统" style="swimlane;horizontal=0;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="40" width="300" height="600" as="geometry"/>
+                </mxCell>
+
+                <!-- 开始节点 -->
+                <mxCell id="start" value="" style="ellipse;fillColor=#000000;" vertex="1" parent="lis_lane">
+                    <mxGeometry x="135" y="60" width="30" height="30" as="geometry"/>
+                </mxCell>
+
+                <!-- LIS系统活动 -->
+                <mxCell id="act1" value="接收解读请求" style="rounded=1;" vertex="1" parent="lis_lane">
+                    <mxGeometry x="100" y="140" width="100" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="act2" value="准备检验数据" style="rounded=1;" vertex="1" parent="lis_lane">
+                    <mxGeometry x="100" y="220" width="100" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="act3" value="调用解读服务" style="rounded=1;" vertex="1" parent="lis_lane">
+                    <mxGeometry x="100" y="300" width="100" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="act4" value="展示解读结果" style="rounded=1;" vertex="1" parent="lis_lane">
+                    <mxGeometry x="100" y="460" width="100" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- CDSS系统活动 -->
+                <mxCell id="cdss_act1" value="验证数据规范" style="rounded=1;" vertex="1" parent="cdss_lane">
+                    <mxGeometry x="100" y="300" width="100" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="cdss_act2" value="分析异常指标" style="rounded=1;" vertex="1" parent="cdss_lane">
+                    <mxGeometry x="100" y="380" width="100" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="cdss_act3" value="生成解读建议" style="rounded=1;" vertex="1" parent="cdss_lane">
+                    <mxGeometry x="100" y="460" width="100" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- 结束节点 -->
+                <mxCell id="end" value="" style="ellipse;fillColor=#000000;strokeColor=#ffffff;strokeWidth=2;" vertex="1" parent="lis_lane">
+                    <mxGeometry x="135" y="540" width="30" height="30" as="geometry"/>
+                </mxCell>
+
+                <!-- 连接线 -->
+                <mxCell id="edge1" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="start" target="act1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge2" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act1" target="act2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge3" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act2" target="act3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge4" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act3" target="cdss_act1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge5" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="cdss_act1" target="cdss_act2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge6" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="cdss_act2" target="cdss_act3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge7" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="cdss_act3" target="act4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge8" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act4" target="end">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

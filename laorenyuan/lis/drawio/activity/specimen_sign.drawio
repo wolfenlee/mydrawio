@@ -1,0 +1,84 @@
+<mxfile host="65bd71144e">
+    <diagram id="specimen-sign" name="检验标本签收活动图">
+        <mxGraphModel dx="287" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="doctor_lane" value="检验科医生" style="swimlane;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="300" height="600" as="geometry"/>
+                </mxCell>
+                <mxCell id="start" value="" style="ellipse;fillColor=#000000;" parent="doctor_lane" vertex="1">
+                    <mxGeometry x="135" y="60" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="act1" value="扫描标本条码" style="rounded=1;" parent="doctor_lane" vertex="1">
+                    <mxGeometry x="100" y="140" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act2" value="录入标本信息" style="rounded=1;" parent="doctor_lane" vertex="1">
+                    <mxGeometry x="100" y="220" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act3" value="确认签收信息" style="rounded=1;" parent="doctor_lane" vertex="1">
+                    <mxGeometry x="100" y="380" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="system_lane" value="LIS系统" style="swimlane;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="40" width="300" height="600" as="geometry"/>
+                </mxCell>
+                <mxCell id="sys_act1" value="验证标本信息" style="rounded=1;" parent="system_lane" vertex="1">
+                    <mxGeometry x="100" y="220" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sys_act2" value="调用质控服务" style="rounded=1;" parent="system_lane" vertex="1">
+                    <mxGeometry x="100" y="300" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sys_act3" value="记录签收信息" style="rounded=1;" parent="system_lane" vertex="1">
+                    <mxGeometry x="100" y="460" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="decision1" value="质控结果?" style="rhombus;" parent="system_lane" vertex="1">
+                    <mxGeometry x="110" y="380" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="end" value="" style="ellipse;fillColor=#000000;" parent="system_lane" vertex="1">
+                    <mxGeometry x="135" y="540" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="cdss_lane" value="CDSS系统" style="swimlane;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="40" width="300" height="600" as="geometry"/>
+                </mxCell>
+                <mxCell id="cdss_act1" value="执行质控检查" style="rounded=1;" parent="cdss_lane" vertex="1">
+                    <mxGeometry x="100" y="300" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge1" value="" style="endArrow=classic;html=1;" parent="1" source="start" target="act1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2" value="" style="endArrow=classic;html=1;" parent="1" source="act1" target="act2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge3" value="" style="endArrow=classic;html=1;" parent="1" source="act2" target="sys_act1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge4" value="" style="endArrow=classic;html=1;" parent="1" source="sys_act1" target="sys_act2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge5" value="" style="endArrow=classic;html=1;" parent="1" source="sys_act2" target="cdss_act1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge6" value="" style="endArrow=classic;html=1;" parent="1" source="cdss_act1" target="decision1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge7" value="正常" style="endArrow=classic;html=1;" parent="1" source="decision1" target="act3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge8" value="异常" style="endArrow=classic;html=1;" parent="1" source="decision1" target="sys_act2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="480" y="400"/>
+                            <mxPoint x="480" y="320"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge9" value="" style="endArrow=classic;html=1;" parent="1" source="act3" target="sys_act3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge10" value="" style="endArrow=classic;html=1;" parent="1" source="sys_act3" target="end" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

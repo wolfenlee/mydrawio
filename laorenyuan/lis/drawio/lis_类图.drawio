@@ -1,0 +1,83 @@
+<mxfile host="65bd71144e">
+    <diagram id="lis-class" name="LIS系统类图">
+        <mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- 工作人员类 -->
+                <mxCell id="Staff" value="Staff&#10;工作人员" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="40" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="Staff_attrs" value="- hospital: String&#10;- department: String&#10;- name: String&#10;- accountId: String&#10;- role: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Staff">
+                    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="Staff_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="Staff">
+                    <mxGeometry y="140" width="200" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="Staff_methods" value="+ verifyIdentity(): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Staff">
+                    <mxGeometry y="148" width="200" height="32" as="geometry"/>
+                </mxCell>
+
+                <!-- 检验报告类 -->
+                <mxCell id="Report" value="Report&#10;检验报告" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="40" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="Report_attrs" value="- reportId: String&#10;- specimenId: String&#10;- testItems: List&lt;TestItem&gt;&#10;- status: String&#10;- reviewResult: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Report">
+                    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="Report_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="Report">
+                    <mxGeometry y="140" width="200" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="Report_methods" value="+ review(): void&#10;+ view(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Report">
+                    <mxGeometry y="148" width="200" height="32" as="geometry"/>
+                </mxCell>
+
+                <!-- CDSS服务类 -->
+                <mxCell id="CDSSService" value="CDSSService&#10;CDSS服务" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="40" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="CDSSService_attrs" value="- apiUrl: String&#10;- method: String&#10;- requestType: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CDSSService">
+                    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="CDSSService_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="CDSSService">
+                    <mxGeometry y="140" width="200" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="CDSSService_methods" value="+ qualityControl(): String&#10;+ analyzeResult(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CDSSService">
+                    <mxGeometry y="148" width="200" height="32" as="geometry"/>
+                </mxCell>
+
+                <!-- 检验项目类 -->
+                <mxCell id="TestItem" value="TestItem&#10;检验项目" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="280" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="TestItem_attrs" value="- itemId: String&#10;- name: String&#10;- value: String&#10;- referenceRange: String&#10;- abnormalFlag: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="TestItem">
+                    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="TestItem_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="TestItem">
+                    <mxGeometry y="140" width="200" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="TestItem_methods" value="+ isAbnormal(): boolean&#10;+ getAnalysis(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="TestItem">
+                    <mxGeometry y="148" width="200" height="32" as="geometry"/>
+                </mxCell>
+
+                <!-- 关系线 -->
+                <!-- Staff - Report -->
+                <mxCell id="Staff_Report" value="reviews/views" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="Staff" target="Report">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Report - TestItem -->
+                <mxCell id="Report_TestItem" value="contains" style="endArrow=diamondThin;html=1;endSize=12;startArrow=open;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;endFill=1;" edge="1" parent="1" source="TestItem" target="Report">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Report - CDSSService -->
+                <mxCell id="Report_CDSSService" value="uses" style="endArrow=open;html=1;endSize=12;startArrow=none;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" parent="1" source="Report" target="CDSSService">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
