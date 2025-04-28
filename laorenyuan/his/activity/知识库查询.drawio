@@ -1,0 +1,99 @@
+<mxfile host="65bd71144e">
+    <diagram id="knowledge-base-query" name="知识库查询活动图">
+        <mxGraphModel dx="287" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="user_lane" value="用户" style="swimlane;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="300" height="800" as="geometry"/>
+                </mxCell>
+                <mxCell id="start" value="" style="ellipse;fillColor=#000000;" parent="user_lane" vertex="1">
+                    <mxGeometry x="135" y="60" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="act1" value="选择知识类型" style="rounded=1;" parent="user_lane" vertex="1">
+                    <mxGeometry x="100" y="140" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act2" value="输入检索条件" style="rounded=1;" parent="user_lane" vertex="1">
+                    <mxGeometry x="100" y="220" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act3" value="浏览检索结果" style="rounded=1;" parent="user_lane" vertex="1">
+                    <mxGeometry x="100" y="380" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4" value="查看知识详情" style="rounded=1;" parent="user_lane" vertex="1">
+                    <mxGeometry x="100" y="460" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="decision1" value="是否查看&#10;说明书" style="rhombus;" parent="user_lane" vertex="1">
+                    <mxGeometry x="110" y="540" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="act5" value="查看药品说明书" style="rounded=1;" parent="user_lane" vertex="1">
+                    <mxGeometry x="100" y="640" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="system_lane" value="系统" style="swimlane;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="40" width="300" height="800" as="geometry"/>
+                </mxCell>
+                <mxCell id="sys_act1" value="加载知识类型列表" style="rounded=1;" parent="system_lane" vertex="1">
+                    <mxGeometry x="100" y="140" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sys_act2" value="执行知识检索" style="rounded=1;" parent="system_lane" vertex="1">
+                    <mxGeometry x="100" y="300" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sys_act3" value="返回检索结果" style="rounded=1;" parent="system_lane" vertex="1">
+                    <mxGeometry x="100" y="380" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sys_act4" value="加载知识详情" style="rounded=1;" parent="system_lane" vertex="1">
+                    <mxGeometry x="100" y="460" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sys_act5" value="加载说明书内容" style="rounded=1;" parent="system_lane" vertex="1">
+                    <mxGeometry x="100" y="640" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="end" value="" style="ellipse;fillColor=#000000;strokeColor=#ffffff;strokeWidth=2;" parent="system_lane" vertex="1">
+                    <mxGeometry x="135" y="740" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge1" value="" style="endArrow=classic;html=1;" parent="1" source="start" target="sys_act1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2" value="" style="endArrow=classic;html=1;" parent="1" source="sys_act1" target="act1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge3" value="" style="endArrow=classic;html=1;" parent="1" source="act1" target="act2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge4" value="" style="endArrow=classic;html=1;" parent="1" source="act2" target="sys_act2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge5" value="" style="endArrow=classic;html=1;" parent="1" source="sys_act2" target="sys_act3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge6" value="" style="endArrow=classic;html=1;" parent="1" source="sys_act3" target="act3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge7" value="" style="endArrow=classic;html=1;" parent="1" source="act3" target="act4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge8" value="" style="endArrow=classic;html=1;" parent="1" source="act4" target="sys_act4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge9" value="" style="endArrow=classic;html=1;" parent="1" source="sys_act4" target="decision1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge10" value="是" style="endArrow=classic;html=1;" parent="1" source="decision1" target="act5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge11" value="" style="endArrow=classic;html=1;" parent="1" source="act5" target="sys_act5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge12" value="" style="endArrow=classic;html=1;" parent="1" source="sys_act5" target="end" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge13" value="否" style="endArrow=classic;html=1;" parent="1" source="decision1" target="end" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="250" y="570"/>
+                            <mxPoint x="250" y="755"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
