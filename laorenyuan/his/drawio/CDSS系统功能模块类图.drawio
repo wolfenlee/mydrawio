@@ -56,13 +56,61 @@
                 </mxCell>
 
                 <!-- 治疗方案推荐模块 -->
-                <mxCell id="TreatmentRecommendation" value="治疗方案推荐&#10;--&#10;- treatmentType: String&#10;- examResults: List&lt;String&gt;&#10;- diagnosis: String&#10;--&#10;+ recommendTreatment()&#10;+ getExamResultPlan()&#10;+ getWesternMedicinePlan()&#10;+ getTraditionalMedicinePlan()&#10;+ getSurgeryPlan()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=120;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="520" y="40" width="200" height="200" as="geometry"/>
+                <!-- 治疗方案推荐模块调整 -->
+                <mxCell id="TreatmentRecommendation" value="治疗方案推荐&#10;--&#10;- treatmentType: String&#10;- examResults: List&lt;String&gt;&#10;- diagnosis: String&#10;- treatmentStatus: String&#10;--&#10;+ setTreatmentType()&#10;+ analyzeExamResults()&#10;+ recommendTreatment()&#10;+ getExamResultPlan()&#10;+ getWesternMedicinePlan()&#10;+ getTraditionalMedicinePlan()&#10;+ confirmTreatment()&#10;+ saveTreatmentPlan()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=120;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="40" width="200" height="280" as="geometry"/>
                 </mxCell>
 
-                <!-- 知识库管理模块 -->
-                <mxCell id="KnowledgeBase" value="知识库管理&#10;--&#10;- knowledgeType: String&#10;- searchKeyword: String&#10;--&#10;+ searchKnowledge()&#10;+ getKnowledgeDetail()&#10;+ getDrugInstructions()&#10;+ getKnowledgeTypes()&#10;+ getRelatedKnowledge()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=120;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="40" y="280" width="200" height="200" as="geometry"/>
+                <!-- 添加治疗建议类 -->
+                <mxCell id="TreatmentAdvice" value="TreatmentAdvice&#10;--&#10;- treatmentId: String&#10;- treatmentType: String&#10;- suggestions: List&lt;String&gt;&#10;- confidence: float&#10;- createTime: Date&#10;--&#10;+ getTreatmentType()&#10;+ getSuggestions()&#10;+ getConfidence()&#10;+ getCreateTime()&#10;+ getReasonAnalysis()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=120;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="40" width="200" height="200" as="geometry"/>
+                </mxCell>
+
+                <!-- 添加检查结果方案类 -->
+                <mxCell id="ExamResultPlan" value="ExamResultPlan&#10;--&#10;- planId: String&#10;- examType: String&#10;- examItems: List&lt;String&gt;&#10;- expectedResults: String&#10;- precautions: String&#10;--&#10;+ getExamType()&#10;+ getExamItems()&#10;+ getExpectedResults()&#10;+ getPrecautions()&#10;+ generateReport()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=120;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="280" width="200" height="200" as="geometry"/>
+                </mxCell>
+
+                <!-- 添加新的关联关系 -->
+                <mxCell id="relation12" value="creates" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="TreatmentRecommendation" target="TreatmentAdvice">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="relation13" value="generates" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="TreatmentRecommendation" target="ExamResultPlan">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- 知识库管理模块调整 -->
+                <mxCell id="KnowledgeBase" value="知识库管理&#10;--&#10;- knowledgeType: String&#10;- searchKeyword: String&#10;- searchConditions: Map&lt;String, String&gt;&#10;--&#10;+ loadKnowledgeTypes()&#10;+ searchKnowledge()&#10;+ getKnowledgeDetail()&#10;+ getDrugInstructions()&#10;+ getKnowledgeTypes()&#10;+ getRelatedKnowledge()&#10;+ setSearchConditions()&#10;+ getSearchHistory()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=140;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="280" width="200" height="260" as="geometry"/>
+                </mxCell>
+                
+                <!-- 添加知识类型类 -->
+                <mxCell id="KnowledgeType" value="KnowledgeType&#10;--&#10;- typeId: String&#10;- typeName: String&#10;- description: String&#10;- parentType: String&#10;--&#10;+ getTypeInfo()&#10;+ getSubTypes()&#10;+ getTypeDescription()&#10;+ isLeafType()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=120;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="580" width="200" height="200" as="geometry"/>
+                </mxCell>
+                
+                <!-- 添加知识详情类 -->
+                <mxCell id="KnowledgeDetail" value="KnowledgeDetail&#10;--&#10;- knowledgeId: String&#10;- title: String&#10;- content: String&#10;- type: KnowledgeType&#10;- createTime: Date&#10;- updateTime: Date&#10;--&#10;+ getBasicInfo()&#10;+ getContent()&#10;+ getRelatedDrugs()&#10;+ getUpdateHistory()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=140;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="820" width="200" height="240" as="geometry"/>
+                </mxCell>
+                
+                <!-- 添加药品说明书类 -->
+                <mxCell id="DrugInstructions" value="DrugInstructions&#10;--&#10;- drugId: String&#10;- drugName: String&#10;- manufacturer: String&#10;- usage: String&#10;- dosage: String&#10;- contraindications: List&lt;String&gt;&#10;--&#10;+ getDrugBasicInfo()&#10;+ getUsageInfo()&#10;+ getSafetyInfo()&#10;+ getWarnings()" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=140;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="820" width="200" height="240" as="geometry"/>
+                </mxCell>
+                
+                <!-- 添加新的关联关系 -->
+                <mxCell id="relation9" value="categorizes" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KnowledgeBase" target="KnowledgeType">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="relation10" value="contains" style="endArrow=diamond;endFill=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KnowledgeType" target="KnowledgeDetail">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="relation11" value="includes" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KnowledgeDetail" target="DrugInstructions">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
 
                 <!-- 相似病历查询模块需要调整 -->
