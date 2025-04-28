@@ -34,17 +34,71 @@
                 </mxCell>
 
                 <!-- CDSS服务类 -->
+                <!-- 修改 CDSSService 类，增加质控相关属性和方法 -->
                 <mxCell id="CDSSService" value="CDSSService&#10;CDSS服务" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="600" y="40" width="200" height="180" as="geometry"/>
+                    <mxGeometry x="600" y="40" width="200" height="220" as="geometry"/>
                 </mxCell>
-                <mxCell id="CDSSService_attrs" value="- apiUrl: String&#10;- method: String&#10;- requestType: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CDSSService">
-                    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+                <mxCell id="CDSSService_attrs" value="- apiUrl: String&#10;- method: String&#10;- requestType: String&#10;- qualityRules: List&lt;String&gt;&#10;- validationRules: List&lt;String&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CDSSService">
+                    <mxGeometry y="40" width="200" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="CDSSService_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="CDSSService">
+                    <mxGeometry y="160" width="200" height="8" as="geometry"/>
+                </mxCell>
+                <!-- 添加 ReportAnalysis 类 -->
+                <mxCell id="ReportAnalysis" value="ReportAnalysis&#10;报告解读" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="500" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="ReportAnalysis_attrs" value="- analysisId: String&#10;- abnormalItems: List&lt;TestItem&gt;&#10;- suggestions: List&lt;String&gt;&#10;- analysisResult: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="ReportAnalysis">
+                    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="ReportAnalysis_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ReportAnalysis">
                     <mxGeometry y="140" width="200" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="CDSSService_methods" value="+ qualityControl(): String&#10;+ analyzeResult(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CDSSService">
+                <mxCell id="ReportAnalysis_methods" value="+ prepareData(): void&#10;+ displayAnalysis(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="ReportAnalysis">
                     <mxGeometry y="148" width="200" height="32" as="geometry"/>
+                </mxCell>
+
+                <!-- 修改 CDSSService 类的方法 -->
+                <mxCell id="CDSSService_methods" value="+ validateData(): boolean&#10;+ qualityControl(): String&#10;+ analyzeResult(): String&#10;+ generateSuggestions(): List&lt;String&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CDSSService">
+                    <mxGeometry y="168" width="200" height="72" as="geometry"/>
+                </mxCell>
+
+                <!-- 添加 Report 与 ReportAnalysis 的关系 -->
+                <mxCell id="Report_Analysis" value="has" style="endArrow=diamondThin;html=1;endSize=12;startArrow=open;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;endFill=1;" edge="1" parent="1" source="ReportAnalysis" target="Report">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- 添加 ReportAnalysis 与 CDSSService 的关系 -->
+                <mxCell id="Analysis_CDSSService" value="uses" style="endArrow=open;html=1;endSize=12;startArrow=none;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" parent="1" source="ReportAnalysis" target="CDSSService">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- 修改 TestItem 类的方法 -->
+                <mxCell id="TestItem_methods" value="+ isAbnormal(): boolean&#10;+ getAnalysis(): String&#10;+ getSuggestions(): List&lt;String&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="TestItem">
+                    <mxGeometry y="148" width="200" height="52" as="geometry"/>
+                </mxCell>
+
+                <!-- 添加 QualityControl 类 -->
+                <mxCell id="QualityControl" value="QualityControl&#10;质控管理" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="280" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="QualityControl_attrs" value="- controlId: String&#10;- status: String&#10;- result: String&#10;- controlData: Map&lt;String,Object&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="QualityControl">
+                    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="QualityControl_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="QualityControl">
+                    <mxGeometry y="140" width="200" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="QualityControl_methods" value="+ prepareData(): void&#10;+ processResult(): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="QualityControl">
+                    <mxGeometry y="148" width="200" height="32" as="geometry"/>
+                </mxCell>
+
+                <!-- 添加 QualityControl 与其他类的关系 -->
+                <mxCell id="Report_QualityControl" value="has" style="endArrow=diamondThin;html=1;endSize=12;startArrow=open;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;endFill=1;" edge="1" parent="1" source="QualityControl" target="Report">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="QualityControl_CDSSService" value="uses" style="endArrow=open;html=1;endSize=12;startArrow=none;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" parent="1" source="QualityControl" target="CDSSService">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
 
                 <!-- 检验项目类 -->
@@ -81,3 +135,40 @@
         </mxGraphModel>
     </diagram>
 </mxfile>
+
+<!-- 添加 ReportReview 类 -->
+<mxCell id="ReportReview" value="ReportReview&#10;报告审核" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+    <mxGeometry x="40" y="280" width="200" height="180" as="geometry"/>
+</mxCell>
+<mxCell id="ReportReview_attrs" value="- reviewId: String&#10;- reviewerId: String&#10;- reviewDate: Date&#10;- reviewStatus: String&#10;- reviewComments: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="ReportReview">
+    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+</mxCell>
+<mxCell id="ReportReview_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ReportReview">
+    <mxGeometry y="140" width="200" height="8" as="geometry"/>
+</mxCell>
+<mxCell id="ReportReview_methods" value="+ submitReview(): void&#10;+ recordReview(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="ReportReview">
+    <mxGeometry y="148" width="200" height="32" as="geometry"/>
+</mxCell>
+
+<!-- 修改 Report 类的方法 -->
+<mxCell id="Report_methods" value="+ review(): void&#10;+ view(): void&#10;+ loadReportData(): void&#10;+ updateReviewStatus(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Report">
+    <mxGeometry y="148" width="200" height="72" as="geometry"/>
+</mxCell>
+
+<!-- 修改 Staff 类的方法 -->
+<mxCell id="Staff_methods" value="+ verifyIdentity(): boolean&#10;+ reviewReport(): void&#10;+ confirmReview(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Staff">
+    <mxGeometry y="148" width="200" height="52" as="geometry"/>
+</mxCell>
+
+<!-- 添加 ReportReview 与其他类的关系 -->
+<mxCell id="Report_Review" value="has" style="endArrow=diamondThin;html=1;endSize=12;startArrow=open;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;endFill=1;" edge="1" parent="1" source="ReportReview" target="Report">
+    <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+
+<mxCell id="Staff_Review" value="performs" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="Staff" target="ReportReview">
+    <mxGeometry relative="1" as="geometry"/>
+</mxCell>
+
+<mxCell id="Review_QualityControl" value="uses" style="endArrow=open;html=1;endSize=12;startArrow=none;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" parent="1" source="ReportReview" target="QualityControl">
+    <mxGeometry relative="1" as="geometry"/>
+</mxCell>
