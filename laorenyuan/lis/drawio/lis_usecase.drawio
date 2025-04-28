@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" modified="2024-01-20T10:00:00.000Z" agent="Mozilla/5.0" version="21.7.5" etag="your-etag">
+  <diagram id="lis-usecase" name="LIS系统用例图">
+    <mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 角色 -->
+        <mxCell id="actor1" value="检验科医生" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="280" width="30" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 系统边界 -->
+        <mxCell id="system" value="LIS系统" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="520" height="520" as="geometry" />
+        </mxCell>
+        
+        <!-- 用例 -->
+        <!-- 检验项目质控相关用例 -->
+        <mxCell id="uc1" value="检验标本签收" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc2" value="检验报告审核" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="220" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc3" value="查看检验报告" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="uc4" value="检验项目质控" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="170" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- 检验结果解读相关用例 -->
+        <mxCell id="uc5" value="检验结果解读" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="420" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- 关系线 -->
+        <!-- 医生与用例的关联关系 -->
+        <mxCell id="edge1" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor1" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge2" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor1" target="uc2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge3" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor1" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 包含关系 -->
+        <mxCell id="include1" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc1" target="uc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="include2" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc2" target="uc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="include3" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="uc3" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- CDSS系统 -->
+        <mxCell id="actor2" value="CDSS系统" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="280" width="30" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- CDSS系统关联 -->
+        <mxCell id="edge4" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="uc4" target="actor2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge5" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="uc5" target="actor2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

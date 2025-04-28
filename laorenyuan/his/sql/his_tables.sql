@@ -176,3 +176,160 @@ CREATE TABLE patient_info (
     birth_date DATE COMMENT '出生日期(患者出生日期)',
     create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
 ) COMMENT '患者信息表';
+
+-- 修改医嘱质控表(medical_order_control)，增加医嘱相关字段
+ALTER TABLE medical_order_control
+ADD COLUMN advice_id VARCHAR(50) COMMENT '医嘱ID(医嘱项目的唯一ID)',
+ADD COLUMN prescription_id VARCHAR(50) COMMENT '处方ID(处方号)',
+ADD COLUMN advice_group VARCHAR(100) COMMENT '医嘱分组(可以代表医嘱分组的信息)',
+ADD COLUMN long_term_temp VARCHAR(20) COMMENT '长期或临时(长期/临时)',
+ADD COLUMN advice_dept VARCHAR(50) COMMENT '医嘱开立科室',
+ADD COLUMN advice_doctor VARCHAR(50) COMMENT '医嘱开立者',
+ADD COLUMN audit_dept VARCHAR(50) COMMENT '医嘱审核科室',
+ADD COLUMN audit_doctor VARCHAR(50) COMMENT '医嘱审核者',
+ADD COLUMN input_time DATETIME COMMENT '录入时间(医嘱开立时间)',
+ADD COLUMN audit_time DATETIME COMMENT '审核时间(医嘱审核时间)',
+ADD COLUMN start_time DATETIME COMMENT '开始时间(医嘱下达的预期开始时间)',
+ADD COLUMN end_time DATETIME COMMENT '结束时间(医嘱下达的预期结束时间)',
+ADD COLUMN specimen VARCHAR(50) COMMENT '标本(检验医嘱独有)',
+ADD COLUMN medication_days INT COMMENT '用药天数',
+ADD COLUMN drug_trade_name VARCHAR(100) COMMENT '药物商品名',
+ADD COLUMN drug_generic_name VARCHAR(100) COMMENT '药物通用名',
+ADD COLUMN drug_approval_number VARCHAR(50) COMMENT '国药准字号',
+ADD COLUMN drug_code VARCHAR(50) COMMENT '药物编码',
+ADD COLUMN drug_category VARCHAR(50) COMMENT '药物类别',
+ADD COLUMN drug_form VARCHAR(50) COMMENT '药物剂型(注射剂/片剂/胶囊剂/丸剂/散剂/气雾剂等)',
+ADD COLUMN administration_route VARCHAR(50) COMMENT '用药途径(口服/皮下注射/肌肉注射/静脉注射/外用/雾化吸入等)',
+ADD COLUMN frequency VARCHAR(50) COMMENT '使用频率',
+ADD COLUMN single_dose VARCHAR(50) COMMENT '单次剂量',
+ADD COLUMN total_dose VARCHAR(50) COMMENT '总剂量',
+ADD COLUMN dose_unit VARCHAR(20) COMMENT '剂量单位',
+ADD COLUMN need_skin_test VARCHAR(5) COMMENT '需要皮试(是/否)',
+ADD COLUMN execution_frequency VARCHAR(50) COMMENT '执行频率(护理医嘱、诊疗医嘱独有)',
+ADD COLUMN nursing_level VARCHAR(20) COMMENT '护理级别',
+ADD COLUMN report_id VARCHAR(50) COMMENT '报告ID(检验报告ID或检查报告ID)',
+ADD COLUMN anesthesia_method VARCHAR(50) COMMENT '麻醉方式(手术医嘱独有)',
+ADD COLUMN exam_position TEXT COMMENT '检查部位(JSON数组)',
+ADD COLUMN exam_method TEXT COMMENT '检查方法(JSON数组)';
+
+-- 修改患者信息表(patient_info)，增加患者相关字段
+ALTER TABLE patient_info
+ADD COLUMN visit_count INT COMMENT '就诊次数("1":初诊，大于1表示复诊)',
+ADD COLUMN occupation VARCHAR(50) COMMENT '职业',
+ADD COLUMN nation VARCHAR(50) COMMENT '民族',
+ADD COLUMN birth_place VARCHAR(200) COMMENT '出生地',
+ADD COLUMN current_address VARCHAR(200) COMMENT '现住地',
+ADD COLUMN fee_type VARCHAR(50) COMMENT '费用类型(医保/商保/自费/公费/等)',
+ADD COLUMN height VARCHAR(20) COMMENT '身高(如:180cm)',
+ADD COLUMN weight VARCHAR(20) COMMENT '体重(如:70kg)',
+ADD COLUMN blood_type VARCHAR(10) COMMENT 'ABO血型(A/B/AB/O)',
+ADD COLUMN rh_type VARCHAR(10) COMMENT 'Rh血型(阴/阳)',
+ADD COLUMN marital_status VARCHAR(20) COMMENT '婚姻状态(未婚/已婚/离异/丧偶)',
+ADD COLUMN special_population TEXT COMMENT '特殊人群(JSON数组)',
+ADD COLUMN physiological_state VARCHAR(50) COMMENT '生理状态(月经期/妊娠期/哺乳期/孕早期/孕中期/孕晚期/卵泡期/黄体期/排卵期)';
+
+-- 新增工作人员信息表(staff_info)
+CREATE TABLE staff_info (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    hospital VARCHAR(100) COMMENT '医院名称',
+    department VARCHAR(50) COMMENT '科室名称',
+    staff_name VARCHAR(50) COMMENT '工作人员姓名',
+    account_id VARCHAR(50) COMMENT '医疗信息系统账号',
+    role VARCHAR(20) COMMENT '角色(医生/护士/药师/等)',
+    title VARCHAR(50) COMMENT '职称',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+) COMMENT '工作人员信息表';
+
+-- 新增门诊记录表(outpatient_record)
+CREATE TABLE outpatient_record (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    patient_id BIGINT COMMENT '关联患者ID',
+    staff_id BIGINT COMMENT '关联工作人员ID',
+    department VARCHAR(50) COMMENT '门诊科室',
+    record_id VARCHAR(50) COMMENT '门诊记录ID',
+    record_content TEXT COMMENT '记录内容(无结构化纯文本内容)',
+    record_time DATETIME COMMENT '门诊记录书写时间',
+    visit_time DATETIME COMMENT '患者就诊时间',
+    is_followup VARCHAR(5) COMMENT '是否复诊(是/否)',
+    pregnancy_status VARCHAR(20) COMMENT '怀孕状态(未孕/已孕/已育)',
+    chief_complaint TEXT COMMENT '主诉',
+    present_illness TEXT COMMENT '现病史',
+    past_history TEXT COMMENT '既往史',
+    personal_history TEXT COMMENT '个人史',
+    menstrual_history TEXT COMMENT '月经史',
+    marriage_history TEXT COMMENT '婚育史',
+    family_history TEXT COMMENT '家族史',
+    allergy_history TEXT COMMENT '过敏史',
+    vaccination_history TEXT COMMENT '接种史',
+    physical_examination TEXT COMMENT '体格检查',
+    auxiliary_examination TEXT COMMENT '辅助检查',
+    specialist_examination TEXT COMMENT '专科检查',
+    medical_advice TEXT COMMENT '嘱咐(医生对患者建议的注意事项)',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    FOREIGN KEY (patient_id) REFERENCES patient_info(id),
+    FOREIGN KEY (staff_id) REFERENCES staff_info(id)
+) COMMENT '门诊记录表';
+
+-- 新增入院记录表(admission_record)
+CREATE TABLE admission_record (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    patient_id BIGINT COMMENT '关联患者ID',
+    staff_id BIGINT COMMENT '关联工作人员ID',
+    department VARCHAR(50) COMMENT '入院科室',
+    record_id VARCHAR(50) COMMENT '入院记录ID',
+    record_content TEXT COMMENT '记录内容(无结构化纯文本内容)',
+    record_time DATETIME COMMENT '入院记录书写时间',
+    admission_time DATETIME COMMENT '患者入院时间',
+    pregnancy_status VARCHAR(20) COMMENT '怀孕状态(未孕/已孕/已育)',
+    medical_historian VARCHAR(100) COMMENT '病史陈述者',
+    chief_complaint TEXT COMMENT '主诉',
+    present_illness TEXT COMMENT '现病史',
+    past_history TEXT COMMENT '既往史',
+    personal_history TEXT COMMENT '个人史',
+    menstrual_history TEXT COMMENT '月经史',
+    marriage_history TEXT COMMENT '婚育史',
+    family_history TEXT COMMENT '家族史',
+    allergy_history TEXT COMMENT '过敏史',
+    vaccination_history TEXT COMMENT '接种史',
+    physical_examination TEXT COMMENT '体格检查',
+    auxiliary_examination TEXT COMMENT '辅助检查',
+    specialist_examination TEXT COMMENT '专科检查',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    FOREIGN KEY (patient_id) REFERENCES patient_info(id),
+    FOREIGN KEY (staff_id) REFERENCES staff_info(id)
+) COMMENT '入院记录表';
+
+-- 新增诊断表(diagnosis)
+CREATE TABLE diagnosis (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    record_id BIGINT COMMENT '关联记录ID(可关联门诊记录或入院记录)',
+    diagnosis_type VARCHAR(50) COMMENT '诊断类型(初步诊断/入院诊断/补充诊断/确诊诊断/其他诊断/鉴别诊断/门诊诊断)',
+    diagnosis_item TEXT COMMENT '诊断项',
+    is_main_diagnosis VARCHAR(5) COMMENT '主要诊断(是/否)',
+    icd_code VARCHAR(50) COMMENT '诊断ICD编码',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
+) COMMENT '诊断表';
+
+-- 新增中医诊断表(tcm_diagnosis)
+CREATE TABLE tcm_diagnosis (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    record_id BIGINT COMMENT '关联记录ID(可关联门诊记录或入院记录)',
+    diagnosis_type VARCHAR(50) COMMENT '诊断类型(初步诊断/入院诊断/补充诊断/确诊诊断/其他诊断/鉴别诊断)',
+    is_main_diagnosis VARCHAR(5) COMMENT '主要诊断(是/否)',
+    disease_name VARCHAR(100) COMMENT '中医疾病名称',
+    disease_code VARCHAR(50) COMMENT '中医疾病代码',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
+) COMMENT '中医诊断表';
+
+-- 新增中医证型表(tcm_syndrome)
+CREATE TABLE tcm_syndrome (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    tcm_diagnosis_id BIGINT COMMENT '关联中医诊断ID',
+    syndrome_name VARCHAR(100) COMMENT '证型名称',
+    syndrome_code VARCHAR(50) COMMENT '证型代码',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    FOREIGN KEY (tcm_diagnosis_id) REFERENCES tcm_diagnosis(id)
+) COMMENT '中医证型表';
